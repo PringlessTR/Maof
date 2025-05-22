@@ -16,8 +16,6 @@ namespace MaofAPI.Models
         public decimal SalesPrice { get; set; }
         public decimal TaxRate { get; set; } // Direct tax rate, e.g., 0.18 for 18%
         public int StockQuantity { get; set; }
-        public int MinimumStockLevel { get; set; }
-        public string ImageUrl { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

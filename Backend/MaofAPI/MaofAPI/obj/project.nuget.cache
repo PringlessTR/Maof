@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UHkN32b9gIw=",
+  "dgSpecHash": "8LDKvJKeE2k=",
   "success": true,
-  "projectFilePath": "C:\\Users\\MSI\\OneDrive\\Masaüstü\\marketapp\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\MaofAPI.csproj",
+  "projectFilePath": "C:\\Users\\MSI\\OneDrive\\Masaüstü\\Maof\\Backend\\MaofAPI\\MaofAPI\\MaofAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MSI\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\MSI\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

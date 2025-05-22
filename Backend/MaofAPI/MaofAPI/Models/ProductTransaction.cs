@@ -35,14 +35,9 @@ namespace MaofAPI.Models
         // Kullanıcı bilgisi
         public int? UserId { get; set; }  // İşlemi yapan kullanıcı
         
-        // Tarih bilgileri
+        // İşlem tarihi
         public DateTime TransactionDate { get; set; }
-        public DateTime CreatedAt { get; set; }
-        
-        // Offline-first için
-        public SyncStatus SyncStatus { get; set; }
-        public Guid SyncId { get; set; }
-        
+               
         // Navigation Properties
         public virtual Product Product { get; set; }
         public virtual Store Store { get; set; }

@@ -52,8 +52,8 @@ namespace MaofAPI.Controllers
                     if (!string.IsNullOrEmpty(filter.SearchTerm))
                     {
                         query = query.Where(s =>
-                            s.SaleNumber.Contains(filter.SearchTerm) ||
-                            s.Notes.Contains(filter.SearchTerm));
+                            s.Id.ToString().Contains(filter.SearchTerm) ||
+                            (s.Notes != null && s.Notes.Contains(filter.SearchTerm)));
                     }
 
                     if (filter.StartDate.HasValue)
@@ -197,7 +197,6 @@ namespace MaofAPI.Controllers
                 // Create new Sale
                 var sale = new Sale
                 {
-                    SaleNumber = saleNumber,
                     UserId = GetUserId(),
                     StoreId = storeId.Value,
                     SaleDate = DateTime.UtcNow,
@@ -207,7 +206,6 @@ namespace MaofAPI.Controllers
                     GrandTotal = saleDto.Items.Sum(i => i.Quantity * i.UnitPrice * (1 + i.TaxRate)) - saleDto.DiscountAmount,
                     Status = saleDto.Status ?? "Completed",
                     Notes = saleDto.Notes,
-                    DeviceId = saleDto.DeviceId,
                     CurrencyId = saleDto.CurrencyId,
                     ExchangeRate = saleDto.ExchangeRate ?? 1.0m,
                     CreatedAt = DateTime.UtcNow,
@@ -259,11 +257,8 @@ namespace MaofAPI.Controllers
                         QuantityBefore = product.StockQuantity + itemDto.Quantity,
                         QuantityChange = -itemDto.Quantity, // Negative for outgoing stock
                         QuantityAfter = product.StockQuantity,
-                        Notes = $"Sale {sale.SaleNumber} item",
+                        Notes = $"Sale {sale.Id} item",
                         TransactionDate = DateTime.UtcNow,
-                        CreatedAt = DateTime.UtcNow,
-                        SyncStatus = SyncStatus.NotSynced,
-                        SyncId = Guid.NewGuid()
                     };
 
                     _context.ProductTransactions.Add(stockTransaction);
@@ -309,8 +304,8 @@ namespace MaofAPI.Controllers
 
                 await _context.SaveChangesAsync();
 
-                _logger.LogInformation("Created new sale with ID {SaleId} and number {SaleNumber} for store {StoreId}",
-                    sale.Id, sale.SaleNumber, storeId);
+                _logger.LogInformation("Created new sale with ID {SaleId} for store {StoreId}",
+                    sale.Id, storeId);
 
                 return CreatedAtAction(nameof(GetSale), new { id = sale.Id }, sale);
             }
@@ -405,11 +400,8 @@ namespace MaofAPI.Controllers
                                 QuantityBefore = product.StockQuantity - existingItem.Quantity,
                                 QuantityChange = existingItem.Quantity, // Positive for returning stock
                                 QuantityAfter = product.StockQuantity,
-                                Notes = $"Sale {sale.SaleNumber} item removed during edit",
-                                TransactionDate = DateTime.UtcNow,
-                                CreatedAt = DateTime.UtcNow,
-                                SyncStatus = SyncStatus.NotSynced,
-                                SyncId = Guid.NewGuid()
+                                Notes = $"Sale {sale.Id} item removed during edit",
+                                TransactionDate = DateTime.UtcNow
                             };
 
                             _context.ProductTransactions.Add(stockTransaction);
@@ -474,11 +466,8 @@ namespace MaofAPI.Controllers
                             QuantityBefore = product.StockQuantity + itemDto.Quantity,
                             QuantityChange = -itemDto.Quantity, // Negative for outgoing stock
                             QuantityAfter = product.StockQuantity,
-                            Notes = $"Sale {sale.SaleNumber} item added during edit",
-                            TransactionDate = DateTime.UtcNow,
-                            CreatedAt = DateTime.UtcNow,
-                            SyncStatus = SyncStatus.NotSynced,
-                            SyncId = Guid.NewGuid()
+                            Notes = $"Sale {sale.Id} item added during edit",
+                            TransactionDate = DateTime.UtcNow
                         };
 
                         _context.ProductTransactions.Add(stockTransaction);
@@ -491,7 +480,7 @@ namespace MaofAPI.Controllers
                     // Update sale totals
                     sale.SubTotal = subTotal;
                     sale.TaxAmount = taxAmount;
-                    sale.GrandTotal = subTotal + taxAmount - sale.DiscountAmount;
+    sale.GrandTotal = subTotal + taxAmount - (sale.DiscountAmount ?? 0);
                 }
 
                 // Update Payments if provided (only allow adding payments, not removing)
@@ -607,11 +596,8 @@ namespace MaofAPI.Controllers
                                 QuantityBefore = product.StockQuantity - item.Quantity,
                                 QuantityChange = item.Quantity, // Positive for returning stock
                                 QuantityAfter = product.StockQuantity,
-                                Notes = $"Sale {sale.SaleNumber} canceled",
+                                Notes = $"Sale {sale.Id} canceled",
                                 TransactionDate = DateTime.UtcNow,
-                                CreatedAt = DateTime.UtcNow,
-                                SyncStatus = SyncStatus.NotSynced,
-                                SyncId = Guid.NewGuid()
                             };
 
                             _context.ProductTransactions.Add(stockTransaction);
@@ -700,7 +686,6 @@ namespace MaofAPI.Controllers
                             // Create new sale
                             var newSale = new Sale
                             {
-                                SaleNumber = saleDto.SaleNumber,
                                 UserId = saleDto.UserId,
                                 StoreId = storeId.Value,
                                 SaleDate = saleDto.SaleDate,
@@ -710,7 +695,6 @@ namespace MaofAPI.Controllers
                                 GrandTotal = saleDto.GrandTotal,
                                 Status = saleDto.Status,
                                 Notes = saleDto.Notes,
-                                DeviceId = saleDto.DeviceId,
                                 CurrencyId = saleDto.CurrencyId,
                                 ExchangeRate = saleDto.ExchangeRate,
                                 CreatedAt = saleDto.CreatedAt,
@@ -782,7 +766,6 @@ namespace MaofAPI.Controllers
                         else
                         {
                             // Update existing sale
-                            existingSale.SaleNumber = saleDto.SaleNumber;
                             existingSale.SaleDate = saleDto.SaleDate;
                             existingSale.SubTotal = saleDto.SubTotal;
                             existingSale.DiscountAmount = saleDto.DiscountAmount;
@@ -790,7 +773,6 @@ namespace MaofAPI.Controllers
                             existingSale.GrandTotal = saleDto.GrandTotal;
                             existingSale.Status = saleDto.Status;
                             existingSale.Notes = saleDto.Notes;
-                            existingSale.DeviceId = saleDto.DeviceId;
                             existingSale.CurrencyId = saleDto.CurrencyId;
                             existingSale.ExchangeRate = saleDto.ExchangeRate;
                             existingSale.UpdatedAt = DateTime.UtcNow;

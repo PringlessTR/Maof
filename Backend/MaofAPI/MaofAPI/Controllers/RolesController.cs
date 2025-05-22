@@ -72,13 +72,11 @@ namespace MaofAPI.Controllers
                     r.Description,
                     r.CreatedAt,
                     r.UpdatedAt,
-                    r.SyncId,
-                    r.SyncStatus,
-                    Permissions = r.RolePermissions.Select(rp => new {
+                    Permissions = r.RolePermissions.Select(rp => rp.Permission != null ? new {
                         rp.Permission.Id,
                         rp.Permission.Name,
                         rp.Permission.Description
-                    })
+                    } : null).Where(p => p != null)
                 });
                 
                 _logger.LogInformation("Retrieved {RoleCount} roles", roles.Count);
@@ -152,8 +150,7 @@ namespace MaofAPI.Controllers
                     Description = roleDto.Description,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
-                    SyncStatus = SyncStatus.NotSynced,
-                    SyncId = roleDto.SyncId ?? Guid.NewGuid()
+                    // Removed sync related properties
                 };
 
                 _context.Roles.Add(role);
@@ -169,8 +166,6 @@ namespace MaofAPI.Controllers
                             RoleId = role.Id,
                             PermissionId = permissionId,
                             CreatedAt = DateTime.UtcNow,
-                            SyncStatus = SyncStatus.NotSynced,
-                            SyncId = Guid.NewGuid()
                         };
                         _context.RolePermissions.Add(rolePermission);
                     }
@@ -228,7 +223,7 @@ namespace MaofAPI.Controllers
                 }
 
                 role.UpdatedAt = DateTime.UtcNow;
-                role.SyncStatus = SyncStatus.NotSynced;
+                // Removed sync status update
 
                 // Update permissions if provided
                 if (roleDto.PermissionIds != null)
@@ -254,8 +249,6 @@ namespace MaofAPI.Controllers
                             RoleId = role.Id,
                             PermissionId = permissionId,
                             CreatedAt = DateTime.UtcNow,
-                            SyncStatus = SyncStatus.NotSynced,
-                            SyncId = Guid.NewGuid()
                         };
                         _context.RolePermissions.Add(rolePermission);
                     }
@@ -314,158 +307,6 @@ namespace MaofAPI.Controllers
             {
                 _logger.LogError(ex, "Error deleting role with ID {RoleId}", id);
                 return StatusCode(500, $"An error occurred while deleting role with ID {id}");
-            }
-        }
-
-        // POST: api/roles/sync
-        [HttpPost("sync")]
-        [Authorize(Policy = Permissions.SyncData)]
-        public async Task<ActionResult<IEnumerable<Role>>> SyncRoles(List<RoleSyncDto> roleDtos)
-        {
-            try
-            {
-                var result = new List<Role>();
-
-                foreach (var roleDto in roleDtos)
-                {
-                    try
-                    {
-                        // Skip invalid roles
-                        if (roleDto.SyncId == Guid.Empty)
-                        {
-                            continue;
-                        }
-
-                        // Try to find existing role by SyncId
-                        var existingRole = await _context.Roles
-                            .Include(r => r.RolePermissions)
-                            .FirstOrDefaultAsync(r => r.SyncId == roleDto.SyncId);
-
-                        if (existingRole == null && roleDto.Id > 0)
-                        {
-                            // Try to find by ID
-                            existingRole = await _context.Roles
-                                .Include(r => r.RolePermissions)
-                                .FirstOrDefaultAsync(r => r.Id == roleDto.Id);
-                        }
-
-                        if (existingRole == null)
-                        {
-                            // Create new role
-                            var newRole = new Role
-                            {
-                                Name = roleDto.Name,
-                                Description = roleDto.Description,
-                                CreatedAt = roleDto.CreatedAt,
-                                UpdatedAt = DateTime.UtcNow,
-                                SyncStatus = SyncStatus.Synced,
-                                SyncId = roleDto.SyncId
-                            };
-
-                            _context.Roles.Add(newRole);
-                            await _context.SaveChangesAsync();
-
-                            // Add role permissions
-                            if (roleDto.PermissionIds != null && roleDto.PermissionIds.Any())
-                            {
-                                foreach (var permissionId in roleDto.PermissionIds)
-                                {
-                                    // Verify permission exists
-                                    bool permissionExists = await _context.Permissions.AnyAsync(p => p.Id == permissionId);
-                                    if (permissionExists)
-                                    {
-                                        var rolePermission = new RolePermission
-                                        {
-                                            RoleId = newRole.Id,
-                                            PermissionId = permissionId,
-                                            CreatedAt = DateTime.UtcNow,
-                                            SyncStatus = SyncStatus.Synced,
-                                            SyncId = Guid.NewGuid()
-                                        };
-                                        _context.RolePermissions.Add(rolePermission);
-                                    }
-                                }
-                                await _context.SaveChangesAsync();
-                            }
-
-                            result.Add(newRole);
-                        }
-                        else
-                        {
-                            // Update existing role
-                            existingRole.Name = roleDto.Name;
-                            existingRole.Description = roleDto.Description;
-                            existingRole.UpdatedAt = DateTime.UtcNow;
-                            existingRole.SyncStatus = SyncStatus.Synced;
-
-                            // Update role permissions
-                            if (roleDto.PermissionIds != null)
-                            {
-                                // Remove existing permissions
-                                _context.RolePermissions.RemoveRange(existingRole.RolePermissions);
-
-                                // Add new permissions
-                                foreach (var permissionId in roleDto.PermissionIds)
-                                {
-                                    // Verify permission exists
-                                    bool permissionExists = await _context.Permissions.AnyAsync(p => p.Id == permissionId);
-                                    if (permissionExists)
-                                    {
-                                        var rolePermission = new RolePermission
-                                        {
-                                            RoleId = existingRole.Id,
-                                            PermissionId = permissionId,
-                                            CreatedAt = DateTime.UtcNow,
-                                            SyncStatus = SyncStatus.Synced,
-                                            SyncId = Guid.NewGuid()
-                                        };
-                                        _context.RolePermissions.Add(rolePermission);
-                                    }
-                                }
-                            }
-
-                            await _context.SaveChangesAsync();
-                            result.Add(existingRole);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        // Log error but continue processing other roles
-                        _logger.LogError(ex, "Error syncing role with ID {RoleId} and SyncId {SyncId}",
-                            roleDto.Id, roleDto.SyncId);
-                    }
-                }
-
-                _logger.LogInformation("Synced {RoleCount} roles", result.Count);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error syncing roles");
-                return StatusCode(500, "An error occurred while syncing roles");
-            }
-        }
-
-        // GET: api/roles/pending-sync
-        [HttpGet("pending-sync")]
-        [Authorize(Policy = Permissions.SyncData)]
-        public async Task<ActionResult<IEnumerable<Role>>> GetPendingSyncRoles()
-        {
-            try
-            {
-                var roles = await _context.Roles
-                    .Include(r => r.RolePermissions)
-                        .ThenInclude(rp => rp.Permission)
-                    .Where(r => r.SyncStatus == SyncStatus.NotSynced)
-                    .ToListAsync();
-
-                _logger.LogInformation("Retrieved {RoleCount} pending sync roles", roles.Count);
-                return Ok(roles);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error retrieving pending sync roles");
-                return StatusCode(500, "An error occurred while retrieving pending sync roles");
             }
         }
 
@@ -546,20 +387,4 @@ namespace MaofAPI.Controllers
         public List<int> PermissionIds { get; set; }
     }
 
-    public class RoleSyncDto
-    {
-        public int Id { get; set; }
-        
-        [Required]
-        public Guid SyncId { get; set; }
-        
-        [Required]
-        public string Name { get; set; }
-        
-        public string Description { get; set; }
-        
-        public DateTime CreatedAt { get; set; }
-        
-        public List<int> PermissionIds { get; set; }
-    }
 }

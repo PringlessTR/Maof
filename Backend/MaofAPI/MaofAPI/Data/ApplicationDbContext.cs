@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MaofAPI.Models;
 using MaofAPI.Models.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace MaofAPI.Data
 {
@@ -34,6 +35,10 @@ namespace MaofAPI.Data
         public DbSet<Sale> Sales { get; set; }
         public DbSet<SaleItem> SaleItems { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        
+        // Customer Management
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         // Sync Management
         public DbSet<SyncLog> SyncLogs { get; set; }
@@ -75,7 +80,8 @@ namespace MaofAPI.Data
             modelBuilder.Entity<Store>()
                 .HasMany(s => s.Promotions)
                 .WithOne(p => p.Store)
-                .HasForeignKey(p => p.StoreId)
+                .HasForeignKey(p => p.StoreId)2	2	2025-05-21 15:18:26.2500000	0	6c495ce0-7825-4ed7-9d14-29831ea6032b
+NULL	NULL	NULL	NULL	NULL
                 .OnDelete(DeleteBehavior.Restrict);
                 
             modelBuilder.Entity<Store>()
@@ -113,7 +119,44 @@ namespace MaofAPI.Data
                 .WithOne(si => si.Store)
                 .HasForeignKey(si => si.StoreId)
                 .OnDelete(DeleteBehavior.Restrict);
-
+                
+            // Configure Customer relationships
+            modelBuilder.Entity<Customer>()
+                .HasOne(c => c.Company)
+                .WithMany(c => c.Customers)
+                .HasForeignKey(c => c.CompanyID)
+                .OnDelete(DeleteBehavior.Restrict);
+                
+            modelBuilder.Entity<Customer>()
+                .HasMany(c => c.Sales)
+                .WithOne(s => s.Customer)
+                .HasForeignKey(s => s.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+                
+            // Configure Sale relationships with Customer
+            modelBuilder.Entity<Sale>()
+                .HasOne(s => s.Customer)
+                .WithMany(c => c.Sales)
+                .HasForeignKey(s => s.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+                
+            // Configure Store relationships with Sale
+            modelBuilder.Entity<Store>()
+                .HasMany(s => s.Sales)
+                .WithOne(s => s.Store)
+                .HasForeignKey(s => s.StoreId)
+                .OnDelete(DeleteBehavior.Restrict);
+                
+            // Configure Company relationships
+            modelBuilder.Entity<Company>()
+                .HasMany(c => c.Customers)
+                .WithOne(c => c.Company)
+                .HasForeignKey(c => c.CompanyID)
+                .OnDelete(DeleteBehavior.Restrict);
+                
+            // Configure Store relationships with Company
+            // Removed Customers relationship as it doesn't exist in the Store model
+            
             // Configure User relationships
             modelBuilder.Entity<User>()
                 .HasMany(u => u.UserRoles)
@@ -133,17 +176,7 @@ namespace MaofAPI.Data
                 .HasForeignKey(pt => pt.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.SyncLogs)
-                .WithOne(sl => sl.User)
-                .HasForeignKey(sl => sl.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
-                
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.SyncBatches)
-                .WithOne(sb => sb.User)
-                .HasForeignKey(sb => sb.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            // Removed SyncLogs and SyncBatches relationships as they don't exist in the User model
 
             modelBuilder.Entity<Role>()
                 .HasMany(r => r.UserRoles)

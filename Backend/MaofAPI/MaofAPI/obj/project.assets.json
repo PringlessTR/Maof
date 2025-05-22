@@ -5237,11 +5237,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MSI\\OneDrive\\Masaüstü\\marketapp\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\MaofAPI.csproj",
+      "projectUniqueName": "C:\\Users\\MSI\\OneDrive\\Masaüstü\\Maof\\Backend\\MaofAPI\\MaofAPI\\MaofAPI.csproj",
       "projectName": "MaofAPI",
-      "projectPath": "C:\\Users\\MSI\\OneDrive\\Masaüstü\\marketapp\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\MaofAPI.csproj",
+      "projectPath": "C:\\Users\\MSI\\OneDrive\\Masaüstü\\Maof\\Backend\\MaofAPI\\MaofAPI\\MaofAPI.csproj",
       "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MSI\\OneDrive\\Masaüstü\\marketapp\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\obj\\",
+      "outputPath": "C:\\Users\\MSI\\OneDrive\\Masaüstü\\Maof\\Backend\\MaofAPI\\MaofAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

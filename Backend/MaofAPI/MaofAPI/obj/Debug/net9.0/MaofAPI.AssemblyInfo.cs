@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MaofAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4860703bf90d8d4a9ee46247d77e9b2e184e46a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b36fb4a9cec4483332a7427dd19f21b50461a4e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("MaofAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MaofAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

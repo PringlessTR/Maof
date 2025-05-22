@@ -64,11 +64,6 @@ namespace MaofAPI.Controllers
                     {
                         query = query.Where(p => p.IsActive);
                     }
-
-                    if (filter.OnlyLowStock)
-                    {
-                        query = query.Where(p => p.StockQuantity <= p.MinimumStockLevel);
-                    }
                 }
 
                 // Apply pagination
@@ -106,6 +101,9 @@ namespace MaofAPI.Controllers
 
                 var product = await _context.Products
                     .Include(p => p.Category)
+                    .Include(p => p.Store)
+                    .Include(p => p.ProductTransactions)
+                    .Include(p => p.Promotions)
                     .FirstOrDefaultAsync(p => p.Id == id && p.StoreId == storeId);
 
                 if (product == null)
@@ -138,6 +136,9 @@ namespace MaofAPI.Controllers
 
                 var product = await _context.Products
                     .Include(p => p.Category)
+                    .Include(p => p.Store)
+                    .Include(p => p.ProductTransactions)
+                    .Include(p => p.Promotions)
                     .FirstOrDefaultAsync(p => p.Barcode == barcode && p.StoreId == storeId);
 
                 if (product == null)
@@ -168,23 +169,71 @@ namespace MaofAPI.Controllers
                     return Forbid("User is not associated with any store");
                 }
 
-                // Check if category exists
-                var category = await _context.Categories.FindAsync(productDto.CategoryId);
+                // Validate required fields
+                if (string.IsNullOrWhiteSpace(productDto.Name))
+                {
+                    return BadRequest("Product name is required");
+                }
+
+                if (productDto.CategoryId <= 0)
+                {
+                    return BadRequest("Category ID must be greater than zero");
+                }
+
+                // Check if category exists and is active
+                var category = await _context.Categories
+                    .FirstOrDefaultAsync(c => c.Id == productDto.CategoryId && c.IsActive);
+                
                 if (category == null)
                 {
-                    return BadRequest($"Category with ID {productDto.CategoryId} not found");
+                    return BadRequest($"Active category with ID {productDto.CategoryId} not found");
+                }
+
+                // Check if store exists and is active
+                var store = await _context.Stores
+                    .FirstOrDefaultAsync(s => s.Id == storeId && s.IsActive);
+                
+                if (store == null)
+                {
+                    return BadRequest("Invalid or inactive store");
                 }
 
                 // Check if barcode is unique within the store
-                if (!string.IsNullOrEmpty(productDto.Barcode))
+                if (!string.IsNullOrWhiteSpace(productDto.Barcode))
                 {
                     bool duplicateBarcode = await _context.Products
-                        .AnyAsync(p => p.Barcode == productDto.Barcode && p.StoreId == storeId);
+                        .AnyAsync(p => p.Barcode == productDto.Barcode.Trim() && p.StoreId == storeId);
 
                     if (duplicateBarcode)
                     {
                         return BadRequest("A product with this barcode already exists in your store");
                     }
+                }
+
+
+                // Validate prices and quantities
+                if (productDto.PurchasePrice < 0)
+                {
+                    return BadRequest("Purchase price cannot be negative");
+                }
+
+                if (productDto.SalesPrice < 0)
+                {
+                    return BadRequest("Sales price cannot be negative");
+                }
+
+                if (productDto.TaxRate < 0 || productDto.TaxRate > 1)
+                {
+                    return BadRequest("Tax rate must be between 0 and 1");
+                }
+
+                if (productDto.StockQuantity < 0)
+                {
+                    return BadRequest("Stock quantity cannot be negative");
+                }
+                if (productDto.MinimumStockLevel < 0)
+                {
+                    return BadRequest("Minimum stock level cannot be negative");
                 }
 
                 var product = new Product
@@ -198,8 +247,6 @@ namespace MaofAPI.Controllers
                     SalesPrice = productDto.SalesPrice,
                     TaxRate = productDto.TaxRate,
                     StockQuantity = productDto.StockQuantity,
-                    MinimumStockLevel = productDto.MinimumStockLevel,
-                    ImageUrl = productDto.ImageUrl,
                     IsActive = productDto.IsActive,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
@@ -262,20 +309,24 @@ namespace MaofAPI.Controllers
                 }
             }
 
-            // Update product properties
-            product.Name = productDto.Name;
-            product.Barcode = productDto.Barcode;
-            product.Description = productDto.Description;
+            // Update product properties with null checks and trimming
+            product.Name = productDto.Name?.Trim();
+            product.Barcode = !string.IsNullOrWhiteSpace(productDto.Barcode) ? productDto.Barcode.Trim() : null;
+            product.Description = !string.IsNullOrWhiteSpace(productDto.Description) ? productDto.Description.Trim() : null;
             product.CategoryId = productDto.CategoryId;
             product.PurchasePrice = productDto.PurchasePrice;
             product.SalesPrice = productDto.SalesPrice;
             product.TaxRate = productDto.TaxRate;
             product.StockQuantity = productDto.StockQuantity;
-            product.MinimumStockLevel = productDto.MinimumStockLevel;
-            product.ImageUrl = productDto.ImageUrl;
             product.IsActive = productDto.IsActive;
             product.UpdatedAt = DateTime.UtcNow;
             product.SyncStatus = SyncStatus.NotSynced;
+
+            // Ensure stock level consistency
+            if (product.StockQuantity < 0)
+            {
+                product.StockQuantity = 0;
+            }
 
             // Create product transaction for tracking changes
             var productTransaction = new ProductTransaction
@@ -300,10 +351,7 @@ namespace MaofAPI.Controllers
                 Notes = "Product updated via API",
                 ReferenceType = "ProductUpdate",
                 UserId = GetUserId(),
-                TransactionDate = DateTime.UtcNow,
-                CreatedAt = DateTime.UtcNow,
-                SyncStatus = SyncStatus.NotSynced,
-                SyncId = Guid.NewGuid()
+                TransactionDate = DateTime.UtcNow
             };
 
             _context.ProductTransactions.Add(productTransaction);
@@ -410,8 +458,6 @@ namespace MaofAPI.Controllers
                             product.SalesPrice = productDto.SalesPrice;
                             product.TaxRate = productDto.TaxRate;
                             product.StockQuantity = productDto.StockQuantity;
-                            product.MinimumStockLevel = productDto.MinimumStockLevel;
-                            product.ImageUrl = productDto.ImageUrl;
                             product.IsActive = productDto.IsActive;
                             product.UpdatedAt = DateTime.UtcNow;
                             product.SyncStatus = SyncStatus.Synced;
@@ -436,8 +482,6 @@ namespace MaofAPI.Controllers
                                     SalesPrice = productDto.SalesPrice,
                                     TaxRate = productDto.TaxRate,
                                     StockQuantity = productDto.StockQuantity,
-                                    MinimumStockLevel = productDto.MinimumStockLevel,
-                                    ImageUrl = productDto.ImageUrl,
                                     IsActive = productDto.IsActive,
                                     CreatedAt = DateTime.UtcNow,
                                     UpdatedAt = DateTime.UtcNow,
@@ -458,8 +502,6 @@ namespace MaofAPI.Controllers
                                 product.SalesPrice = productDto.SalesPrice;
                                 product.TaxRate = productDto.TaxRate;
                                 product.StockQuantity = productDto.StockQuantity;
-                                product.MinimumStockLevel = productDto.MinimumStockLevel;
-                                product.ImageUrl = productDto.ImageUrl;
                                 product.IsActive = productDto.IsActive;
                                 product.UpdatedAt = DateTime.UtcNow;
                                 product.SyncStatus = SyncStatus.Synced;
@@ -643,10 +685,7 @@ namespace MaofAPI.Controllers
                     Notes = stockUpdate.Notes,
                     ReferenceType = "Manual",
                     UserId = GetUserId(),
-                    TransactionDate = DateTime.UtcNow,
-                    CreatedAt = DateTime.UtcNow,
-                    SyncStatus = SyncStatus.NotSynced,
-                    SyncId = Guid.NewGuid()
+                    TransactionDate = DateTime.UtcNow
                 };
 
                 _context.ProductTransactions.Add(productTransaction);

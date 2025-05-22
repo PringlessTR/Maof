@@ -560,28 +560,19 @@ namespace MaofAPI.Controllers
                     .Where(s => s.StoreId == storeId.Value && s.SyncStatus == SyncStatus.NotSynced)
                     .CountAsync();
 
-                var pendingUsers = await _context.Users
-                    .Where(u => u.StoreId == storeId.Value && u.SyncStatus == SyncStatus.NotSynced)
-                    .CountAsync();
 
                 var pendingPromotions = await _context.Promotions
                     .Where(p => p.StoreId == storeId.Value && p.SyncStatus == SyncStatus.NotSynced)
                     .CountAsync();
 
-                var pendingInventory = await _context.ProductTransactions
-                    .Where(i => i.StoreId == storeId.Value && i.SyncStatus == SyncStatus.NotSynced)
-                    .CountAsync();
 
                 var response = new SyncPendingCountsDto
                 {
                     Products = pendingProducts,
                     Categories = pendingCategories,
                     Sales = pendingSales,
-                    Users = pendingUsers,
                     Promotions = pendingPromotions,
-                    Inventory = pendingInventory,
-                    Total = pendingProducts + pendingCategories + pendingSales + 
-                            pendingUsers + pendingPromotions + pendingInventory
+                    Total = pendingProducts + pendingCategories + pendingSales + pendingPromotions
                 };
 
                 _logger.LogInformation("Retrieved pending sync counts for store {StoreId}", storeId.Value);

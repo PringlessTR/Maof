@@ -156,12 +156,10 @@ namespace MaofAPI.Services
                 Email = email,
                 FirstName = firstName,
                 LastName = lastName,
-                IsActive = true, // Default to active
                 StoreId = storeId,
+                IsActive = true,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
-                SyncStatus = SyncStatus.NotSynced,
-                SyncId = Guid.NewGuid()
             };
 
             _context.Users.Add(user);
@@ -180,8 +178,6 @@ namespace MaofAPI.Services
                             UserId = user.Id,
                             RoleId = roleId,
                             CreatedAt = DateTime.UtcNow,
-                            SyncStatus = SyncStatus.NotSynced,
-                            SyncId = Guid.NewGuid()
                         };
                         _context.UserRoles.Add(userRole);
                     }
@@ -243,7 +239,6 @@ namespace MaofAPI.Services
                 user.IsActive = isActive.Value;
             }
             user.UpdatedAt = DateTime.UtcNow;
-            user.SyncStatus = SyncStatus.NotSynced;
 
             // Update roles if provided
             if (roleIds != null)
@@ -262,8 +257,6 @@ namespace MaofAPI.Services
                             UserId = user.Id,
                             RoleId = roleId,
                             CreatedAt = DateTime.UtcNow,
-                            SyncStatus = SyncStatus.NotSynced,
-                            SyncId = Guid.NewGuid()
                         };
                         _context.UserRoles.Add(userRole);
                     }

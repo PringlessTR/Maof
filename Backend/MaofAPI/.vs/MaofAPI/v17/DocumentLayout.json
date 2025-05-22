@@ -1,49 +1,105 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\controllers\\synccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\controllers\\synccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\migrations\\20250522114959_editpermissionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\migrations\\20250522114959_editpermissionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\models\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\models\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\models\\producttransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\producttransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\models\\promotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\promotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\models\\rolepermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\rolepermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\models\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\models\\enums\\producttransactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\enums\\producttransactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\controllers\\synccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\controllers\\synccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\controllers\\salescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\controllers\\salescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\controllers\\salescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\offline-first-marketapp\\backend\\maofapi\\maofapi\\models\\appsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\authorization\\permissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\authorization\\permissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\authorization\\permissionrequirement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\authorization\\permissionrequirement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\authorization\\permissionauthorizationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\authorization\\permissionauthorizationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\authorization\\permissionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\authorization\\permissionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\authorization\\adminpermissionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\authorization\\adminpermissionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\models\\enums\\producttransactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\enums\\producttransactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|c:\\users\\msi\\onedrive\\masa\u00FCst\u00FC\\maof\\backend\\maofapi\\maofapi\\models\\appsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5B324DA-080E-447B-AA42-95BBFE5C4028}|MaofAPI\\MaofAPI.csproj|solutionrelative:maofapi\\models\\appsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -54,15 +110,192 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "20250522114959_EditPermissionModel.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Migrations\\20250522114959_EditPermissionModel.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Migrations\\20250522114959_EditPermissionModel.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Migrations\\20250522114959_EditPermissionModel.cs",
+              "RelativeToolTip": "MaofAPI\\Migrations\\20250522114959_EditPermissionModel.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T11:50:24.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Promotion.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Promotion.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Models\\Promotion.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Promotion.cs",
+              "RelativeToolTip": "MaofAPI\\Models\\Promotion.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAkwBwAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T11:49:11.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "MaofAPI\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAM4BAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T11:22:18.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Controllers\\RolesController.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "MaofAPI\\Controllers\\RolesController.cs",
+              "ViewState": "AgIAAFUBAAAAAAAAAAAcwGsBAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T11:10:49.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductTransaction.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\ProductTransaction.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Models\\ProductTransaction.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\ProductTransaction.cs",
+              "RelativeToolTip": "MaofAPI\\Models\\ProductTransaction.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T11:10:02.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Product.cs",
+              "RelativeToolTip": "MaofAPI\\Models\\Product.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA5wBgAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T11:09:05.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Company.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Company.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Models\\Company.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Company.cs",
+              "RelativeToolTip": "MaofAPI\\Models\\Company.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAIA3wBkAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T09:44:42.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Permission.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Permission.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Models\\Permission.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Permission.cs",
+              "RelativeToolTip": "MaofAPI\\Models\\Permission.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:57:15.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PermissionRequirement.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\PermissionRequirement.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Authorization\\PermissionRequirement.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\PermissionRequirement.cs",
+              "RelativeToolTip": "MaofAPI\\Authorization\\PermissionRequirement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:57:04.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PermissionAuthorizationHandler.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\PermissionAuthorizationHandler.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Authorization\\PermissionAuthorizationHandler.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\PermissionAuthorizationHandler.cs",
+              "RelativeToolTip": "MaofAPI\\Authorization\\PermissionAuthorizationHandler.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:56:58.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PermissionAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\PermissionAttribute.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Authorization\\PermissionAttribute.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\PermissionAttribute.cs",
+              "RelativeToolTip": "MaofAPI\\Authorization\\PermissionAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:56:57.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AdminPermissionHandler.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\AdminPermissionHandler.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Authorization\\AdminPermissionHandler.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\AdminPermissionHandler.cs",
+              "RelativeToolTip": "MaofAPI\\Authorization\\AdminPermissionHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:56:53.797Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RolePermission.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\RolePermission.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Models\\RolePermission.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\RolePermission.cs",
+              "RelativeToolTip": "MaofAPI\\Models\\RolePermission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:55:58.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Permissions.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\Permissions.cs",
+              "RelativeDocumentMoniker": "MaofAPI\\Authorization\\Permissions.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Authorization\\Permissions.cs",
+              "RelativeToolTip": "MaofAPI\\Authorization\\Permissions.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAQwBAAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:54:53.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\appsettings.json",
               "RelativeDocumentMoniker": "MaofAPI\\appsettings.json",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\appsettings.json",
               "RelativeToolTip": "MaofAPI\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -70,59 +303,63 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
               "Title": "SyncController.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Controllers\\SyncController.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\SyncController.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Controllers\\SyncController.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Controllers\\SyncController.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\SyncController.cs",
               "RelativeToolTip": "MaofAPI\\Controllers\\SyncController.cs",
-              "ViewState": "AgIAABcCAAAAAAAAAAAkwCoCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADACAAAAAAAAAAAwwEECAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T12:37:41.556Z"
+              "WhenOpened": "2025-05-21T12:37:41.556Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Controllers\\AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\AuthController.cs",
               "RelativeToolTip": "MaofAPI\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAvwMMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T12:37:33.885Z"
+              "WhenOpened": "2025-05-21T12:37:33.885Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 14,
               "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Services\\AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Services\\AuthService.cs",
               "RelativeToolTip": "MaofAPI\\Services\\AuthService.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAIAwwCAAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAwwKIAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T12:32:16.396Z"
+              "WhenOpened": "2025-05-21T12:32:16.396Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "ProductsController.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Controllers\\ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Controllers\\ProductsController.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "MaofAPI\\Controllers\\ProductsController.cs",
-              "ViewState": "AgIAAHYBAAAAAAAAAIAxwJEBAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAACYBAAAAAAAAAAAwwDgBAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T12:18:38.645Z"
+              "WhenOpened": "2025-05-21T12:18:38.645Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 23,
               "Title": "ProductTransactionType.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Models\\Enums\\ProductTransactionType.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Enums\\ProductTransactionType.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Models\\Enums\\ProductTransactionType.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Models\\Enums\\ProductTransactionType.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\Enums\\ProductTransactionType.cs",
               "RelativeToolTip": "MaofAPI\\Models\\Enums\\ProductTransactionType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -130,11 +367,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 24,
               "Title": "AppSetting.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Models\\AppSetting.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\AppSetting.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Models\\AppSetting.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Models\\AppSetting.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\AppSetting.cs",
               "RelativeToolTip": "MaofAPI\\Models\\AppSetting.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -142,52 +379,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "SalesController.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Controllers\\SalesController.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\SalesController.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Controllers\\SalesController.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Controllers\\SalesController.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Controllers\\SalesController.cs",
               "RelativeToolTip": "MaofAPI\\Controllers\\SalesController.cs",
-              "ViewState": "AgIAACoEAAAAAAAAAAAowDoEAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANABAAAAAAAAAAAwwOIBAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T12:07:23.018Z"
+              "WhenOpened": "2025-05-21T12:07:23.018Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Data\\ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "MaofAPI\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAcwFIAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T11:13:28.527Z"
+              "WhenOpened": "2025-05-20T11:13:28.527Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "UserRole.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Models\\UserRole.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\UserRole.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Models\\UserRole.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Models\\UserRole.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Models\\UserRole.cs",
               "RelativeToolTip": "MaofAPI\\Models\\UserRole.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T10:01:35.101Z"
+              "WhenOpened": "2025-05-20T10:01:35.101Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 21,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Program.cs",
               "RelativeDocumentMoniker": "MaofAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Offline-first-MarketApp\\Backend\\MaofAPI\\MaofAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\MSI\\OneDrive\\Masa\u00FCst\u00FC\\Maof\\Backend\\MaofAPI\\MaofAPI\\Program.cs",
               "RelativeToolTip": "MaofAPI\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T09:57:30.245Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-20T09:57:30.245Z"
             }
           ]
         }

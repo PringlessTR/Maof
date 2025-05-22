@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MaofAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250521131316_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250522114959_EditPermissionModel")]
+    partial class EditPermissionModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -154,6 +154,58 @@ namespace MaofAPI.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("MaofAPI.Models.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("SyncId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("SyncStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TaxNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TaxOffice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+                });
+
             modelBuilder.Entity("MaofAPI.Models.Currency", b =>
                 {
                     b.Property<int>("Id")
@@ -195,6 +247,56 @@ namespace MaofAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Currencies");
+                });
+
+            modelBuilder.Entity("MaofAPI.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CompanyID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("SyncId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("SyncStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TaxNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyID");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("MaofAPI.Models.Payment", b =>
@@ -281,12 +383,6 @@ namespace MaofAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("SyncId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("SyncStatus")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -317,15 +413,8 @@ namespace MaofAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
-
-                    b.Property<int>("MinimumStockLevel")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -378,9 +467,6 @@ namespace MaofAPI.Migrations
                     b.Property<decimal?>("CostBefore")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Notes")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -411,12 +497,6 @@ namespace MaofAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StoreId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("SyncId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("SyncStatus")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("TaxRateAfter")
@@ -472,12 +552,18 @@ namespace MaofAPI.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsForCustomer")
+                        .HasColumnType("bit");
+
                     b.Property<decimal?>("MinimumPurchaseAmount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -525,12 +611,6 @@ namespace MaofAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("SyncId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("SyncStatus")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -549,12 +629,6 @@ namespace MaofAPI.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid>("SyncId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("SyncStatus")
-                        .HasColumnType("int");
 
                     b.HasKey("RoleId", "PermissionId");
 
@@ -577,11 +651,13 @@ namespace MaofAPI.Migrations
                     b.Property<int>("CurrencyId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeviceId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("DiscountAmount")
+                    b.Property<decimal?>("DiscountAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("EarnedPoints")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("ExchangeRate")
@@ -596,10 +672,6 @@ namespace MaofAPI.Migrations
 
                     b.Property<DateTime>("SaleDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("SaleNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -623,12 +695,17 @@ namespace MaofAPI.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<decimal?>("UsedPoints")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CurrencyId");
+
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("StoreId");
 
@@ -900,12 +977,6 @@ namespace MaofAPI.Migrations
                     b.Property<int?>("StoreId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("SyncId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("SyncStatus")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -930,12 +1001,6 @@ namespace MaofAPI.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid>("SyncId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("SyncStatus")
-                        .HasColumnType("int");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -968,6 +1033,16 @@ namespace MaofAPI.Migrations
                     b.Navigation("Store");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MaofAPI.Models.Customer", b =>
+                {
+                    b.HasOne("MaofAPI.Models.Company", "Company")
+                        .WithMany("Customers")
+                        .HasForeignKey("CompanyID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("MaofAPI.Models.Payment", b =>
@@ -1088,6 +1163,11 @@ namespace MaofAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MaofAPI.Models.Customer", "Customer")
+                        .WithMany("Sales")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("MaofAPI.Models.Store", "Store")
                         .WithMany("Sales")
                         .HasForeignKey("StoreId")
@@ -1101,6 +1181,8 @@ namespace MaofAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Currency");
+
+                    b.Navigation("Customer");
 
                     b.Navigation("Store");
 
@@ -1143,9 +1225,9 @@ namespace MaofAPI.Migrations
                         .IsRequired();
 
                     b.HasOne("MaofAPI.Models.User", "User")
-                        .WithMany("SyncBatches")
+                        .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Store");
@@ -1167,9 +1249,9 @@ namespace MaofAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("MaofAPI.Models.User", "User")
-                        .WithMany("SyncLogs")
+                        .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Store");
@@ -1213,10 +1295,20 @@ namespace MaofAPI.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("MaofAPI.Models.Company", b =>
+                {
+                    b.Navigation("Customers");
+                });
+
             modelBuilder.Entity("MaofAPI.Models.Currency", b =>
                 {
                     b.Navigation("Payments");
 
+                    b.Navigation("Sales");
+                });
+
+            modelBuilder.Entity("MaofAPI.Models.Customer", b =>
+                {
                     b.Navigation("Sales");
                 });
 
@@ -1283,10 +1375,6 @@ namespace MaofAPI.Migrations
                     b.Navigation("ProductTransactions");
 
                     b.Navigation("Sales");
-
-                    b.Navigation("SyncBatches");
-
-                    b.Navigation("SyncLogs");
 
                     b.Navigation("UserRoles");
                 });

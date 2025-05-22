@@ -7,11 +7,7 @@ namespace MaofAPI.Models
     {
         public int RoleId { get; set; }
         public int PermissionId { get; set; }
-        public DateTime CreatedAt { get; set; }
-        
-        // Fields added for offline-first functionality
-        public SyncStatus SyncStatus { get; set; }
-        public Guid SyncId { get; set; }
+        public DateTime CreatedAt { get; set; }    
         
         // Navigation Properties
         public virtual Role Role { get; set; }

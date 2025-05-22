@@ -225,8 +225,6 @@ namespace MaofAPI.Controllers
                     StoreId = userDto.StoreId,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
-                    SyncStatus = SyncStatus.NotSynced,
-                    SyncId = userDto.SyncId ?? Guid.NewGuid()
                 };
 
                 _context.Users.Add(user);
@@ -242,8 +240,6 @@ namespace MaofAPI.Controllers
                             UserId = user.Id,
                             RoleId = roleId,
                             CreatedAt = DateTime.UtcNow,
-                            SyncStatus = SyncStatus.NotSynced,
-                            SyncId = Guid.NewGuid()
                         };
                         _context.UserRoles.Add(userRole);
                     }
@@ -355,7 +351,6 @@ namespace MaofAPI.Controllers
                 }
 
                 user.UpdatedAt = DateTime.UtcNow;
-                user.SyncStatus = SyncStatus.NotSynced;
 
                 // Update roles if provided
                 if (userDto.RoleIds != null && userDto.RoleIds.Any())
@@ -381,8 +376,6 @@ namespace MaofAPI.Controllers
                             UserId = user.Id,
                             RoleId = roleId,
                             CreatedAt = DateTime.UtcNow,
-                            SyncStatus = SyncStatus.NotSynced,
-                            SyncId = Guid.NewGuid()
                         };
                         _context.UserRoles.Add(userRole);
                     }
@@ -446,7 +439,6 @@ namespace MaofAPI.Controllers
                 // Instead of hard delete, soft delete by setting IsActive to false
                 user.IsActive = false;
                 user.UpdatedAt = DateTime.UtcNow;
-                user.SyncStatus = SyncStatus.NotSynced;
 
                 await _context.SaveChangesAsync();
 
@@ -465,172 +457,10 @@ namespace MaofAPI.Controllers
         // POST: api/users/sync
         [HttpPost("sync")]
         [Authorize(Policy = Permissions.SyncData)]
-        public async Task<ActionResult<IEnumerable<User>>> SyncUsers(List<UserSyncDto> userDtos)
+        public async Task<ActionResult<IEnumerable<User>>> SyncUsers()
         {
-            try
-            {
-                int? storeId = GetUserStoreId();
-                if (!storeId.HasValue && !User.HasClaim("permission", Permissions.ManageAllStores))
-                {
-                    return Forbid("User is not associated with any store and doesn't have system-wide permissions");
-                }
-
-                var result = new List<User>();
-
-                foreach (var userDto in userDtos)
-                {
-                    try
-                    {
-                        // Skip invalid users
-                        if (userDto.SyncId == Guid.Empty)
-                        {
-                            continue;
-                        }
-
-                        // Try to find existing user by SyncId
-                        var existingUser = await _context.Users
-                            .Include(u => u.UserRoles)
-                            .FirstOrDefaultAsync(u => u.SyncId == userDto.SyncId);
-
-                        if (existingUser == null && userDto.Id > 0)
-                        {
-                            // Try to find by ID
-                            existingUser = await _context.Users
-                                .Include(u => u.UserRoles)
-                                .FirstOrDefaultAsync(u => u.Id == userDto.Id);
-                        }
-
-                        // Regular admins can only sync users in their store
-                        if (!User.HasClaim("permission", Permissions.ManageAllStores) && 
-                            existingUser != null && existingUser.StoreId != storeId)
-                        {
-                            _logger.LogWarning("Unauthorized attempt to sync user {UserId} by admin {AdminId}", 
-                                existingUser.Id, GetUserId());
-                            continue;
-                        }
-
-                        if (existingUser == null)
-                        {
-                            // Create new user
-                            string hashedPassword = userDto.PasswordHash;
-                            if (string.IsNullOrEmpty(hashedPassword) && !string.IsNullOrEmpty(userDto.Password))
-                            {
-                                hashedPassword = _authService.HashPassword(userDto.Password);
-                            }
-
-                            var newUser = new User
-                            {
-                                UserName = userDto.UserName,
-                                PasswordHash = hashedPassword,
-                                Email = userDto.Email,
-                                FirstName = userDto.FirstName,
-                                LastName = userDto.LastName,
-                                IsActive = userDto.IsActive,
-                                StoreId = userDto.StoreId,
-                                CreatedAt = userDto.CreatedAt,
-                                UpdatedAt = DateTime.UtcNow,
-                                LastLoginDate = userDto.LastLoginDate,
-                                SyncStatus = SyncStatus.Synced,
-                                SyncId = userDto.SyncId
-                            };
-
-                            _context.Users.Add(newUser);
-                            await _context.SaveChangesAsync();
-
-                            // Add roles
-                            if (userDto.RoleIds != null && userDto.RoleIds.Any())
-                            {
-                                foreach (var roleId in userDto.RoleIds)
-                                {
-                                    var userRole = new UserRole
-                                    {
-                                        UserId = newUser.Id,
-                                        RoleId = roleId,
-                                        CreatedAt = DateTime.UtcNow,
-                                        SyncStatus = SyncStatus.Synced,
-                                        SyncId = Guid.NewGuid()
-                                    };
-                                    _context.UserRoles.Add(userRole);
-                                }
-                                await _context.SaveChangesAsync();
-                            }
-
-                            // Remove sensitive data before adding to result
-                            newUser.PasswordHash = null;
-                            result.Add(newUser);
-                        }
-                        else
-                        {
-                            // Update existing user
-                            existingUser.UserName = userDto.UserName;
-                            existingUser.Email = userDto.Email;
-                            existingUser.FirstName = userDto.FirstName;
-                            existingUser.LastName = userDto.LastName;
-                            existingUser.IsActive = userDto.IsActive;
-                            
-                            // Only system admins can change store
-                            if (User.HasClaim("permission", Permissions.ManageAllStores) && userDto.StoreId.HasValue)
-                            {
-                                existingUser.StoreId = userDto.StoreId;
-                            }
-                            
-                            // Update password if provided
-                            if (!string.IsNullOrEmpty(userDto.PasswordHash))
-                            {
-                                existingUser.PasswordHash = userDto.PasswordHash;
-                            }
-                            else if (!string.IsNullOrEmpty(userDto.Password))
-                            {
-                                existingUser.PasswordHash = _authService.HashPassword(userDto.Password);
-                            }
-
-                            existingUser.UpdatedAt = DateTime.UtcNow;
-                            existingUser.SyncStatus = SyncStatus.Synced;
-
-                            // Update roles if provided
-                            if (userDto.RoleIds != null && userDto.RoleIds.Any())
-                            {
-                                // Remove existing roles
-                                _context.UserRoles.RemoveRange(existingUser.UserRoles);
-
-                                // Add new roles
-                                foreach (var roleId in userDto.RoleIds)
-                                {
-                                    var userRole = new UserRole
-                                    {
-                                        UserId = existingUser.Id,
-                                        RoleId = roleId,
-                                        CreatedAt = DateTime.UtcNow,
-                                        SyncStatus = SyncStatus.Synced,
-                                        SyncId = Guid.NewGuid()
-                                    };
-                                    _context.UserRoles.Add(userRole);
-                                }
-                            }
-
-                            await _context.SaveChangesAsync();
-
-                            // Remove sensitive data before adding to result
-                            existingUser.PasswordHash = null;
-                            result.Add(existingUser);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        // Log error but continue processing other users
-                        _logger.LogError(ex, "Error syncing user with ID {UserId} and SyncId {SyncId}",
-                            userDto.Id, userDto.SyncId);
-                    }
-                }
-
-                _logger.LogInformation("Synced {UserCount} users", result.Count);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error syncing users");
-                return StatusCode(500, "An error occurred while syncing users");
-            }
+            // Sync functionality has been removed as it's not supported in this version
+            return BadRequest("User synchronization is not supported in this version");
         }
 
         // GET: api/users/pending-sync
@@ -646,31 +476,14 @@ namespace MaofAPI.Controllers
                     return Forbid("User is not associated with any store and doesn't have system-wide permissions");
                 }
 
-                var query = _context.Users
-                    .Include(u => u.UserRoles)
-                    .Where(u => u.SyncStatus == SyncStatus.NotSynced);
-
-                // If not a system admin, filter by store
-                if (!User.HasClaim("permission", Permissions.ManageAllStores))
-                {
-                    query = query.Where(u => u.StoreId == storeId);
-                }
-
-                var users = await query.ToListAsync();
-
-                // Remove sensitive data
-                foreach (var user in users)
-                {
-                    user.PasswordHash = null;
-                }
-
-                _logger.LogInformation("Retrieved {UserCount} pending sync users", users.Count);
-                return Ok(users);
+                // Return empty list as sync is not supported
+                _logger.LogInformation("User synchronization is not supported in this version");
+                return Ok(new List<User>());
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error retrieving pending sync users");
-                return StatusCode(500, "An error occurred while retrieving pending sync users");
+                _logger.LogError(ex, "Error in GetPendingSyncUsers");
+                return StatusCode(500, "An error occurred while processing the request");
             }
         }
 
@@ -777,30 +590,6 @@ namespace MaofAPI.Controllers
 
         public int? StoreId { get; set; }
 
-        public List<int> RoleIds { get; set; }
-    }
-
-    public class UserSyncDto
-    {
-        public int Id { get; set; }
-        
-        [Required]
-        public Guid SyncId { get; set; }
-        
-        [Required]
-        public string UserName { get; set; }
-        
-        // Either Password or PasswordHash should be provided
-        public string Password { get; set; }
-        public string PasswordHash { get; set; }
-        
-        public string Email { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public bool IsActive { get; set; }
-        public int? StoreId { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? LastLoginDate { get; set; }
         public List<int> RoleIds { get; set; }
     }
 
