@@ -363,3 +363,4 @@ C:\Users\MSI\OneDrive\Masaüstü\Maof\Backend\MaofAPI\MaofAPI\obj\Debug\net9.0\s
 C:\Users\MSI\OneDrive\Masaüstü\Maof\Backend\MaofAPI\MaofAPI\obj\Debug\net9.0\MaofAPI.csproj.Up2Date
 C:\Users\MSI\OneDrive\Masaüstü\Maof\Backend\MaofAPI\MaofAPI\obj\Debug\net9.0\MaofAPI.genruntimeconfig.cache
 C:\Users\MSI\OneDrive\Masaüstü\Maof\Backend\MaofAPI\MaofAPI\obj\Debug\net9.0\ref\MaofAPI.dll
+C:\Users\MSI\OneDrive\Masaüstü\Maof\Backend\MaofAPI\MaofAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

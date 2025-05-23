@@ -1010,52 +1010,6 @@
   },
   {
     "ContainingType": "MaofAPI.Controllers.RolesController",
-    "Method": "GetPendingSyncRoles",
-    "RelativePath": "api/Roles/pending-sync",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[MaofAPI.Models.Role, MaofAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "MaofAPI.Controllers.RolesController",
-    "Method": "SyncRoles",
-    "RelativePath": "api/Roles/sync",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "roleDtos",
-        "Type": "System.Collections.Generic.List\u00601[[MaofAPI.Controllers.RoleSyncDto, MaofAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[MaofAPI.Models.Role, MaofAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "MaofAPI.Controllers.RolesController",
     "Method": "GetRolesWithPermissions",
     "RelativePath": "api/Roles/with-permissions",
     "HttpMethod": "GET",
@@ -1952,7 +1906,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "MaofAPI.Models.User",
+        "Type": "MaofAPI.Controllers.UserDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -2042,13 +1996,7 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userDtos",
-        "Type": "System.Collections.Generic.List\u00601[[MaofAPI.Controllers.UserSyncDto, MaofAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[MaofAPI.Models.User, MaofAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",

@@ -80,8 +80,7 @@ namespace MaofAPI.Data
             modelBuilder.Entity<Store>()
                 .HasMany(s => s.Promotions)
                 .WithOne(p => p.Store)
-                .HasForeignKey(p => p.StoreId)2	2	2025-05-21 15:18:26.2500000	0	6c495ce0-7825-4ed7-9d14-29831ea6032b
-NULL	NULL	NULL	NULL	NULL
+                .HasForeignKey(p => p.StoreId)
                 .OnDelete(DeleteBehavior.Restrict);
                 
             modelBuilder.Entity<Store>()

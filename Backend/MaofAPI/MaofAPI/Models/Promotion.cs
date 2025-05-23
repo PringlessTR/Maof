@@ -22,8 +22,11 @@ namespace MaofAPI.Models
         
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        
-        
+
+        // Fields added for offline-first functionality
+        public SyncStatus SyncStatus { get; set; }
+        public Guid SyncId { get; set; }
+
         // Navigation Properties
         public virtual Store Store { get; set; }
         public virtual Product Product { get; set; }

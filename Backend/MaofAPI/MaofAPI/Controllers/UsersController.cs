@@ -104,31 +104,41 @@ namespace MaofAPI.Controllers
             }
         }
 
-        // GET: api/users/5
         [HttpGet("{id}")]
         [Authorize(Policy = Permissions.ViewUsers)]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<UserDto>> GetUser(int id)
         {
             try
             {
                 int? storeId = GetUserStoreId();
-                if (!storeId.HasValue && !User.HasClaim("permission", Permissions.ManageAllStores))
-                {
-                    return Forbid("User is not associated with any store and doesn't have system-wide permissions");
-                }
+             if (!storeId.HasValue && !User.HasClaim("permission", Permissions.ManageAllStores))
+               {
+                   return Forbid("User is not associated with any store and doesn't have system-wide permissions");
+               }
 
-                var query = _context.Users
+                var user = await _context.Users
                     .Include(u => u.UserRoles)
                         .ThenInclude(ur => ur.Role)
-                    .AsQueryable();
-
-                // If not a system admin, filter by store
-                if (!User.HasClaim("permission", Permissions.ManageAllStores))
-                {
-                    query = query.Where(u => u.StoreId == storeId);
-                }
-
-                var user = await query.FirstOrDefaultAsync(u => u.Id == id);
+                    .Where(u => u.Id == id)
+                    .Select(u => new UserDto
+                    {
+                        Id = u.Id,
+                        UserName = u.UserName,
+                        Email = u.Email,
+                        FirstName = u.FirstName,
+                        LastName = u.LastName,
+                        IsActive = u.IsActive,
+                        StoreId = u.StoreId,
+                        CreatedAt = u.CreatedAt,
+                        UpdatedAt = u.UpdatedAt,
+                        LastLoginDate = u.LastLoginDate,
+                        UserRoles = u.UserRoles.Select(ur => new UserRoleDto
+                        {
+                            RoleId = ur.RoleId,
+                            RoleName = ur.Role.Name
+                        }).ToList()
+                    })
+                    .FirstOrDefaultAsync();
 
                 if (user == null)
                 {
@@ -136,15 +146,12 @@ namespace MaofAPI.Controllers
                     return NotFound($"User with ID {id} not found");
                 }
 
-                // Remove sensitive data
-                user.PasswordHash = null;
-
                 return Ok(user);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving user with ID {UserId}", id);
-                return StatusCode(500, $"An error occurred while retrieving user with ID {id}");
+                return StatusCode(500, "An error occurred while retrieving the user");
             }
         }
 
@@ -532,6 +539,28 @@ namespace MaofAPI.Controllers
             }
             return 0; // This should never happen if authorization is working correctly
         }
+    }
+
+    public class UserDto
+    {
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public bool IsActive { get; set; }
+        public int? StoreId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+        public DateTime? LastLoginDate { get; set; }
+        public ICollection<UserRoleDto> UserRoles { get; set; }
+    }
+
+    
+    public class UserRoleDto
+    {
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
     }
 
     // DTOs for Users
